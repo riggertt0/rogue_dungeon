@@ -26,7 +26,11 @@ public class Inventory : MonoBehaviour
 
     public GameObject backGround;
 
-    
+    public static bool isOpenInventory;
+
+    [SerializeField] private GameObject menu;
+
+
     public void Start()
     {
         if(items.Count == 0)
@@ -36,7 +40,8 @@ public class Inventory : MonoBehaviour
 
         backGround.SetActive(false);
         UpdateInventory();
-
+        backGround.SetActive(!backGround.activeSelf);
+        backGround.SetActive(!backGround.activeSelf);
     }
 
     public void Update() 
@@ -46,17 +51,17 @@ public class Inventory : MonoBehaviour
             MoveObject();
         }
 
-        if(Input.GetKeyDown(KeyCode.E) && currentID == -1 && !GameObject.Find("Menu"))
+        if(Input.GetKeyDown(KeyCode.E) && currentID == -1 && !menu.activeSelf)
         {
             backGround.SetActive(!backGround.activeSelf);
             if(backGround.activeSelf)
             {
                 UpdateInventory();
             }
-            if(!backGround.activeSelf && !GameObject.Find("Menu"))
-                Time.timeScale = 1f;
+            if (!backGround.activeSelf && !menu.activeSelf)
+                isOpenInventory = false;
             else
-                Time.timeScale = 0f;
+                isOpenInventory = true;
         }
     }
 

@@ -27,7 +27,7 @@ public class TestSpell : MonoBehaviour
     {
         if (Time.time > nextFireTime)
         {
-            if (Time.timeScale != 0f)
+            if (!Inventory.isOpenInventory)
             {
                 if (Input.GetMouseButtonDown(1))
                 {

@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -84,3 +85,8 @@ MonoBehaviour:
     img: {fileID: 21300000, guid: 024321f177697bc4b8c48ae295af1184, type: 3}
     combination: 1
     item: {fileID: 1630245471571356557, guid: 08b45aeb7ff435f4483be1e7c624f9f2, type: 3}
+  - id: 8
+    name: Armor
+    img: {fileID: 21300000, guid: d659f7396cd57754eba78763cf986c51, type: 3}
+    combination: 0
+    item: {fileID: 2298325615029022866, guid: 5aef5fba18662aa45b3c33f0fadf76d2, type: 3}

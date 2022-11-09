@@ -27,7 +27,7 @@ public class close_damage : MonoBehaviour
     void Update()
     {
         if (Time.time > nextFireTime) {
-            if (Time.timeScale != 0f)
+            if (!Inventory.isOpenInventory)
             {
                 if (Input.GetMouseButtonDown(0)) {
                     nextFireTime = Time.time + cooldownTime;

@@ -50,7 +50,7 @@ public class EnemyReceiveDamage : MonoBehaviour
 
                 Loot.GetComponent<ItemTrigger>().death_discarding = delta_pos.magnitude;
 
-                Loot.GetComponent<Rigidbody2D>().velocity = direction * 1.8f;//����� � ������� ���� ���� �������� ����������
+                Loot.GetComponent<Rigidbody2D>().velocity = direction * 1.8f;
             }            
         }
     }
