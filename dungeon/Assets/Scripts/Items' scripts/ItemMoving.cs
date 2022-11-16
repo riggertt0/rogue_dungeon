@@ -23,19 +23,20 @@ public class ItemMoving : MonoBehaviour
             Vector2 coinPos = transform.position;
             if (Vector2.Distance(playerPos, coinPos) < distance)
             {
-                int occupiedÑells = 0;
+                int occupiedCells = 0;
+
                 bool NoMaxInstances = false;
                 foreach (ItemInventory item in items)
                 {
                     if (item.id == 0)
-                        occupiedÑells++;
+                        occupiedCells++;
                     if(item.id == GetComponent<ItemTrigger>().itemID && item.combination && item.count < 4)
                     {
                         NoMaxInstances = true;
                         break;
                     }
                 }
-                if(occupiedÑells > 0 || NoMaxInstances)
+                if(occupiedCells > 0 || NoMaxInstances)
                     transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
             }
         }
