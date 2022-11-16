@@ -47,7 +47,7 @@ MonoBehaviour:
   items:
   - id: 0
     name: Empty
-    img: {fileID: 21300000, guid: 6c9f4d8ef42e9c74aa7543e04e8a305b, type: 3}
+    img: {fileID: 21300000, guid: 4f033cdd2b09f9a43b139729d09d002c, type: 3}
     combination: 0
     item: {fileID: 0}
   - id: 1
@@ -90,3 +90,13 @@ MonoBehaviour:
     img: {fileID: 21300000, guid: d659f7396cd57754eba78763cf986c51, type: 3}
     combination: 0
     item: {fileID: 2298325615029022866, guid: 5aef5fba18662aa45b3c33f0fadf76d2, type: 3}
+  - id: 9
+    name: Helm
+    img: {fileID: 21300000, guid: eddb0f61210d2f4429ae92bc08d1b3ba, type: 3}
+    combination: 0
+    item: {fileID: 2332336937050829325, guid: 2ddd7afb7d5aa424cabf4ea67452d4fc, type: 3}
+  - id: 10
+    name: Bow
+    img: {fileID: 21300000, guid: f049b8f6e6c70664abce7e9de8fc5a5c, type: 3}
+    combination: 0
+    item: {fileID: 862497013880591132, guid: b4c13ec992c348a419503caa61bb088e, type: 3}

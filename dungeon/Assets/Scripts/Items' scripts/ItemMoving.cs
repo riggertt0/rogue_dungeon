@@ -7,10 +7,12 @@ public class ItemMoving : MonoBehaviour
     private GameObject player;
     public float speed;
     public float distance;
+    private List<ItemInventory> items;
 
     void Start()
     {
         player = GameObject.Find("Player");
+        items = GameObject.Find("Main Camera").GetComponent<Inventory>().items;
     }
 
     void Update()
@@ -19,10 +21,22 @@ public class ItemMoving : MonoBehaviour
         {
             Vector2 playerPos = player.transform.position;
             Vector2 coinPos = transform.position;
-
             if (Vector2.Distance(playerPos, coinPos) < distance)
             {
-                transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                int occupiedÑells = 0;
+                bool NoMaxInstances = false;
+                foreach (ItemInventory item in items)
+                {
+                    if (item.id == 0)
+                        occupiedÑells++;
+                    if(item.id == GetComponent<ItemTrigger>().itemID && item.combination && item.count < 4)
+                    {
+                        NoMaxInstances = true;
+                        break;
+                    }
+                }
+                if(occupiedÑells > 0 || NoMaxInstances)
+                    transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
             }
         }
     }

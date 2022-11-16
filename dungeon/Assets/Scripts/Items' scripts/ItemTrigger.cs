@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemTrigger : MonoBehaviour
 {
-    public Camera cam;
+    public GameObject cam;
 
     public GameObject item;
     public int itemID;
@@ -19,6 +19,11 @@ public class ItemTrigger : MonoBehaviour
     public DataBase data;
 
     public bool functionality;
+
+    void Start()
+    {
+        cam = GameObject.Find("Main Camera");
+    }
 
     void Update()
     {
@@ -35,12 +40,8 @@ public class ItemTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            cam = Camera.current;
-            if (cam != null)
-            {
                 cam.GetComponent<Inventory>().SearchForSameItem(data.items[itemID], 1);
                 Destroy(gameObject);
-            }
         }
     }
 }

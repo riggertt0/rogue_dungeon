@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 6431059416720263580}
   - component: {fileID: 7588824271142329909}
   - component: {fileID: 307858973281819229}
+  - component: {fileID: 2619505570039096402}
+  - component: {fileID: 3962725373895422212}
   m_Layer: 0
   m_Name: armor
   m_TagString: Projectile
@@ -170,3 +172,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2619505570039096402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2298325615029022866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd36d1d0375c42444a7fa79fb076ec7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armor: 5.5
+--- !u!114 &3962725373895422212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2298325615029022866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13feb11029c4b21449ea1943d708eccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 690290903044872564, guid: fd1c37dba38d8b547bf6b25daaef4f44, type: 3}

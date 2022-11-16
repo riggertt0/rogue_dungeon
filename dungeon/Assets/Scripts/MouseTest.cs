@@ -14,7 +14,6 @@ public class MouseTest : MonoBehaviour
     void Start()
     {
         cam = GameObject.Find("Main Camera");
-        //OnMouseOver();
     }
 
     void OnMouseEnter()
@@ -32,7 +31,6 @@ public class MouseTest : MonoBehaviour
         
         if(isMouseOver)
         {
-            Debug.Log("help");
             if (Input.GetMouseButtonDown(1))
             {
 
@@ -41,8 +39,8 @@ public class MouseTest : MonoBehaviour
                     if (item.GetComponent<ItemFunction>() != null)
                     {
                         item.GetComponent<ItemFunction>().UseItem();
-                        GameObject.Find("Main Camera").GetComponent<Inventory>().items[ID].count--;
-                        GameObject.Find("Main Camera").GetComponent<Inventory>().UpdateInventory();
+                        cam.GetComponent<Inventory>().items[ID].count--;
+                        cam.GetComponent<Inventory>().UpdateInventory();
                     }
                 }
             }

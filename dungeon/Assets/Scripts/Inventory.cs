@@ -28,6 +28,8 @@ public class Inventory : MonoBehaviour
 
     public static bool isOpenInventory;
 
+    public int uniqueItemCount;
+
     [SerializeField] private GameObject menu;
 
 
@@ -42,6 +44,7 @@ public class Inventory : MonoBehaviour
         UpdateInventory();
         backGround.SetActive(!backGround.activeSelf);
         backGround.SetActive(!backGround.activeSelf);
+        uniqueItemCount = 0;
     }
 
     public void Update() 
@@ -73,14 +76,14 @@ public class Inventory : MonoBehaviour
             {
                 if (items[i].id == item.id)
                 {
-                    if (items[i].count < 128)
+                    if (items[i].count < 4)
                     {
                         items[i].count += count;
 
-                        if (items[i].count > 128)
+                        if (items[i].count > 4)
                         {
-                            count = items[i].count - 128;
-                            items[i].count = 128;
+                            count = items[i].count - 4;
+                            items[i].count = 4;
                         }
                         else
                         {
@@ -137,7 +140,7 @@ public class Inventory : MonoBehaviour
         items[id].id = invItem.id;
         items[id].count = invItem.count;
         items[id].itemGameObj.GetComponent<Image>().sprite = data.items[invItem.id].img;
-        items[id].itemGameObj.GetComponent<MouseTest>().item = data.items[invItem.id].item;
+        items[id].itemGameObj.GetComponent<MouseTest>().item = invItem.item_button;
         items[id].combination = invItem.combination;
 
         if (invItem.count > 1 && invItem.id != 0)
@@ -197,7 +200,7 @@ public class Inventory : MonoBehaviour
             }
             else
             {
-                items[i].itemGameObj.GetComponent<Image>().sprite = null;
+                items[i].itemGameObj.GetComponent<Image>().sprite = data.items[0].img;
                 items[i].itemGameObj.GetComponent<MouseTest>().item = null;
                 items[i].itemGameObj.GetComponent<MouseTest>().ID = i;
                 items[i].id = 0;
@@ -232,15 +235,15 @@ public class Inventory : MonoBehaviour
             }
             else
             {
-                if(II.count + currentItem.count <= 128)
+                if(II.count + currentItem.count <= 4)
                 {
                     II.count += currentItem.count;
                 }
                 else
                 {
-                    AddItem(currentID, data.items[II.id], II.count + currentItem.count - 128);
+                    AddItem(currentID, data.items[II.id], II.count + currentItem.count - 4);
 
-                    II.count = 128;
+                    II.count = 4;
                 }
 
                 II.itemGameObj.GetComponentInChildren<Text>().text = II.count.ToString();
@@ -250,6 +253,7 @@ public class Inventory : MonoBehaviour
 
             movingObject.gameObject.SetActive(false);
         }
+        UpdateInventory();
     }
 
     public void MoveObject()
