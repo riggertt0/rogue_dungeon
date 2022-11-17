@@ -20,9 +20,12 @@ public class ItemTrigger : MonoBehaviour
 
     public bool functionality;
 
+    private List<ItemInventory> items;
+
     void Start()
     {
         cam = GameObject.Find("Main Camera");
+        items = GameObject.Find("Main Camera").GetComponent<Inventory>().items;
     }
 
     void Update()
@@ -40,8 +43,25 @@ public class ItemTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            int occupiedCells = 0;
+
+            bool NoMaxInstances = false;
+            foreach (ItemInventory item in items)
+            {
+                if (item.id == 0)
+                    occupiedCells++;
+                if (item.id == GetComponent<ItemTrigger>().itemID && item.combination && item.count < 4)
+                {
+                    NoMaxInstances = true;
+                    break;
+                }
+            }
+            if (occupiedCells > 0 || NoMaxInstances)
+            {
                 cam.GetComponent<Inventory>().SearchForSameItem(data.items[itemID], 1);
+                cam.GetComponent<Inventory>().Update();
                 Destroy(gameObject);
+            }
         }
     }
 }

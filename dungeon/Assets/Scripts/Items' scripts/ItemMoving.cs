@@ -8,6 +8,7 @@ public class ItemMoving : MonoBehaviour
     public float speed;
     public float distance;
     private List<ItemInventory> items;
+    public bool selection;
 
     void Start()
     {
@@ -36,7 +37,7 @@ public class ItemMoving : MonoBehaviour
                         break;
                     }
                 }
-                if(occupiedCells > 0 || NoMaxInstances)
+                if (occupiedCells > 0 || NoMaxInstances)
                     transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
             }
         }
