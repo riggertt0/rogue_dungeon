@@ -12,7 +12,8 @@ public class TestProjectile : MonoBehaviour
         {
             if (Collision.GetComponent<EnemyReceiveDamage>() != null)
             {
-                Collision.GetComponent<EnemyReceiveDamage>().DealDamage(Damage);
+                float damageMultiplier = GameObject.FindObjectOfType<PlayerStats>().GetDamageMultiplier();
+                Collision.GetComponent<EnemyReceiveDamage>().DealDamage(Damage * damageMultiplier);
             }
             Destroy(gameObject);
         }

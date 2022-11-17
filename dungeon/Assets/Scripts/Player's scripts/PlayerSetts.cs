@@ -86,6 +86,13 @@ public class PlayerSetts : MonoBehaviour
 
     public void DealDamage(float Damage)
     {
+        PlayerStats stats = GameObject.FindObjectOfType<PlayerStats>();
+        if (stats.IsEvaded())
+        {
+            return;
+        }
+        Damage = Damage * (1 - stats.absorbedDamage);
+        
         Health -= Damage;
         CheckDeath();
         healthPercent.text = "" + Health + "%";

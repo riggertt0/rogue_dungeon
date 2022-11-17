@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,8 @@ public class EnemyReceiveDamage : MonoBehaviour
     public GameObject[] loot;
 
     public Slider healthBarSlider;
+
+    public int xp = 1;
 
     void Start()
     {
@@ -32,6 +35,7 @@ public class EnemyReceiveDamage : MonoBehaviour
         {
 
             Destroy(gameObject);
+            GameObject.FindObjectOfType<PlayerStats>().AddXp(xp);
 
             for (int i = 0; i < loot.Length; i++)
             {
