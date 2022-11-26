@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MouseTest : MonoBehaviour
+public class PersonButton : MonoBehaviour
 {
     public GameObject item;
     public int ID;
@@ -30,7 +30,6 @@ public class MouseTest : MonoBehaviour
     {
         if (isMouseOver)
         {
-            //UnityEngine.Debug.Log("some text");
             if (Input.GetMouseButtonDown(1))
             {
 
@@ -39,7 +38,6 @@ public class MouseTest : MonoBehaviour
                     if (item.GetComponent<ItemFunction>() != null)
                     {
                         item.GetComponent<ItemFunction>().UseItem();
-                        cam.GetComponent<Inventory>().items[ID].count--;
                         cam.GetComponent<Inventory>().UpdateInventory();
                     }
                 }

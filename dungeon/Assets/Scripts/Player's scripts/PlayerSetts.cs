@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class PlayerSetts : MonoBehaviour
 {
@@ -9,9 +12,9 @@ public class PlayerSetts : MonoBehaviour
 
     public GameObject player;
 
-    public float Health;
-
     public float MaxHealth;
+
+    public float Health;
 
     public GameObject healthBar;
 
@@ -24,6 +27,59 @@ public class PlayerSetts : MonoBehaviour
     public GameObject die_light;
 
     public GameObject tomb;
+
+    public float evasionChance = 0.01f;
+    public float criticalChance = 0.05f;
+    public float criticalDamageMultiplier = 1.5f;
+    public int xp = 0;
+    public int level = 1;
+    public int maxLevel = 50;
+    public float armor = 0.0f;
+    public float magicalResistance = 0.02f;
+
+    public GameObject PlayerStats;
+
+    public bool IsEvaded()
+    {
+        return Random.Range(0f, 1f) < evasionChance;
+    }
+
+    public float GetDamageMultiplier()
+    {
+        if (Random.Range(0f, 1f) < criticalChance)
+        {
+            return criticalDamageMultiplier;
+        }
+        return 1;
+    }
+
+    public int XpNeededToLevelUp()
+    {
+        if (level == maxLevel)
+        {
+            return Int32.MaxValue;
+        }
+        return 5 + 5 * level;
+    }
+
+    public void LevelUp()
+    {
+        xp -= XpNeededToLevelUp();
+        ++level;
+
+        evasionChance += 0.005f;
+        criticalChance += 0.01f;
+        criticalDamageMultiplier += 0.05f;
+    }
+
+    public void AddXp(int addXp)
+    {
+        xp += addXp;
+        while (xp > XpNeededToLevelUp())
+        {
+            LevelUp();
+        }
+    }
 
     void Awake()
     {
@@ -103,5 +159,11 @@ public class PlayerSetts : MonoBehaviour
     private float CalculateHealthPercentage()
     {
         return (Health / MaxHealth);
+    }
+
+    public void ChangeArmor(float delta_armor)
+    {
+        armor += delta_armor;
+        PlayerStats.GetComponent<PlayerStats>().UpdateStats();
     }
 }

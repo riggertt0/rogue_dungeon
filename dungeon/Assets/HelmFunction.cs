@@ -5,8 +5,38 @@ using UnityEngine.UI;
 
 public class HelmFunction : ItemFunction
 {
+    public GameObject Helm;
+    public bool isUsed;
+
+    public void Start()
+    {
+        isUsed = false;
+    }
+    
+
     public override void UseItem()
     {
-        GameObject.Find("Head").GetComponent<Image>().sprite = GetComponent<SpriteRenderer>().sprite;
+        GameObject head = GameObject.Find("Head");
+        GameObject game_manager = GameObject.Find("Game Manager");
+        
+        if (!isUsed)
+        {
+            head.GetComponent<Image>().sprite = GetComponent<SpriteRenderer>().sprite;
+            head.GetComponent<PersonButton>().item = Helm;
+
+            game_manager.GetComponent<PlayerSetts>().ChangeArmor(GetComponent<HelmScript>().armor);
+            isUsed = true;
+        }
+        else
+        {
+            head.GetComponent<Image>().sprite = Resources.Load("ButtonBG", typeof(Sprite)) as Sprite;
+            head.GetComponent<PersonButton>().item = null;
+            ItemTrigger item_triger = GetComponent<ItemTrigger>();
+            head.GetComponent<PersonButton>().cam.GetComponent<Inventory>().SearchForSameItem(item_triger.data.items[item_triger.itemID], 1);
+
+
+            game_manager.GetComponent<PlayerSetts>().ChangeArmor(-GetComponent<HelmScript>().armor);
+            isUsed = false;
+        }
     }
 }
