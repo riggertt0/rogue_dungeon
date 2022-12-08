@@ -8,4 +8,9 @@ public class ItemFunction : MonoBehaviour
     {
         
     }
+
+    public virtual void UnUseItem()
+    {
+
+    }
 }

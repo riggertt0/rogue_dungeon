@@ -15,6 +15,8 @@ public class EnemyReceiveDamage : MonoBehaviour
 
     public Slider healthBarSlider;
 
+    public int xp_per_kill;
+
     void Start()
     {
         Health = MaxHealth;
@@ -32,6 +34,10 @@ public class EnemyReceiveDamage : MonoBehaviour
         {
 
             Destroy(gameObject);
+
+            GameObject game_manager = GameObject.Find("Game Manager");
+
+            game_manager.GetComponent<PlayerSetts>().AddXp(xp_per_kill);
 
             for (int i = 0; i < loot.Length; i++)
             {
@@ -51,7 +57,9 @@ public class EnemyReceiveDamage : MonoBehaviour
                 Loot.GetComponent<ItemTrigger>().death_discarding = delta_pos.magnitude;
 
                 Loot.GetComponent<Rigidbody2D>().velocity = direction * 1.8f;
-            }            
+            }
+
+
         }
     }
 

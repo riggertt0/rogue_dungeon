@@ -18,6 +18,8 @@ public class close_damage : MonoBehaviour
 
     private float nextFireTime = 0f;
 
+    public GameObject game_manager;
+
     void Start()
     {
         nextFireTime = Time.time;
@@ -53,7 +55,7 @@ public class close_damage : MonoBehaviour
                     Vector2 direction = (mousePos - myPos).normalized;
 
                     Hit.GetComponent<Rigidbody2D>().velocity = direction * projectileForce;
-                    Hit.GetComponent<close_projectile>().Damage = Random.Range(minDamage, maxDamage);
+                    Hit.GetComponent<close_projectile>().Damage = Random.Range(minDamage, maxDamage) * game_manager.GetComponent<PlayerSetts>().GetDamageMultiplier(); 
                 }
             }
         }

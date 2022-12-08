@@ -37,7 +37,7 @@ public class PersonButton : MonoBehaviour
                 {
                     if (item.GetComponent<ItemFunction>() != null)
                     {
-                        item.GetComponent<ItemFunction>().UseItem();
+                        item.GetComponent<ItemFunction>().UnUseItem();
                         cam.GetComponent<Inventory>().UpdateInventory();
                     }
                 }

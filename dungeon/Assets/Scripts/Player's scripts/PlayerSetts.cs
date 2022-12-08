@@ -24,6 +24,8 @@ public class PlayerSetts : MonoBehaviour
 
     public Text healthPercent;
 
+    public Text Lvl_text_pallet;
+
     public GameObject die_light;
 
     public GameObject tomb;
@@ -48,6 +50,7 @@ public class PlayerSetts : MonoBehaviour
     {
         if (Random.Range(0f, 1f) < criticalChance)
         {
+            Debug.Log("Crit");
             return criticalDamageMultiplier;
         }
         return 1;
@@ -59,7 +62,7 @@ public class PlayerSetts : MonoBehaviour
         {
             return Int32.MaxValue;
         }
-        return 5 + 5 * level;
+        return 20 + 15 * level;
     }
 
     public void LevelUp()
@@ -67,9 +70,12 @@ public class PlayerSetts : MonoBehaviour
         xp -= XpNeededToLevelUp();
         ++level;
 
-        evasionChance += 0.005f;
-        criticalChance += 0.01f;
-        criticalDamageMultiplier += 0.05f;
+        evasionChance += 0.001f;
+        criticalChance += 0.002f;
+        criticalDamageMultiplier += 0.01f;
+        Lvl_text_pallet.text = level.ToString();
+
+        PlayerStats.GetComponent<PlayerStats>().UpdateStats();
     }
 
     public void AddXp(int addXp)
@@ -130,6 +136,7 @@ public class PlayerSetts : MonoBehaviour
         {
             fill.GetComponent<Image>().color = new Color(0.8509804f, 0.8154773f, 0.08235291f, 1f);
         }
+        PlayerStats.GetComponent<PlayerStats>().UpdateStats();
     }
 
     private void CheckOverHeal()
@@ -142,18 +149,22 @@ public class PlayerSetts : MonoBehaviour
 
     public void DealDamage(float Damage)
     {
-        Health -= Damage;
-        CheckDeath();
-        healthPercent.text = "" + Health + "%";
-        healthBarSlider.value = CalculateHealthPercentage();
-        if (Health/MaxHealth < 0.6)
+        if (!IsEvaded())
         {
-            fill.GetComponent<Image>().color = new Color(0.8509804f, 0.8154773f, 0.08235291f, 1f);
+            Health -= Damage * (Mathf.Pow(2.718f, 100.0f / (armor + 144.27f)) - 1);
+            CheckDeath();
+            healthPercent.text = "" + Health + "%";
+            healthBarSlider.value = CalculateHealthPercentage();
+            if (Health / MaxHealth < 0.6)
+            {
+                fill.GetComponent<Image>().color = new Color(0.8509804f, 0.8154773f, 0.08235291f, 1f);
+            }
+            if (Health / MaxHealth < 0.3)
+            {
+                fill.GetComponent<Image>().color = new Color(0.8301887f, 0.01174793f, 0.01174793f, 1f);
+            }
         }
-        if (Health / MaxHealth < 0.3)
-        {
-            fill.GetComponent<Image>().color = new Color(0.8301887f, 0.01174793f, 0.01174793f, 1f);
-        }
+        PlayerStats.GetComponent<PlayerStats>().UpdateStats();
     }
 
     private float CalculateHealthPercentage()

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Pause_menu : MonoBehaviour
 {
-    public static bool GameIsPaused = false;
+    public bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
 
@@ -13,7 +13,7 @@ public class Pause_menu : MonoBehaviour
     {
        if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if(GameIsPaused )
+            if(GameIsPaused)
             {
                 Resume();
             }
@@ -27,8 +27,7 @@ public class Pause_menu : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
-        if(!GameObject.Find("Main Camera").GetComponent<Inventory>().backGround.activeSelf)
-            Time.timeScale = 1f;
+        Time.timeScale = 1f;
         GameIsPaused = false;
     }
 
