@@ -29,7 +29,7 @@ public class TestEnemyShooting : MonoBehaviour
 
         yield return new WaitForSeconds(cooldown);
 
-        if (player != null && gameObject.GetComponent<AgentScript>().aggre == true)
+        if (player != null && gameObject.GetComponent<AgentScript>().aggre == true && gameObject.GetComponent<AgentScript>().isOnLine)
         {
             GameObject Spell = Instantiate(projectile, transform.position, Quaternion.identity);
             Vector2 playerPos = player.transform.position;
