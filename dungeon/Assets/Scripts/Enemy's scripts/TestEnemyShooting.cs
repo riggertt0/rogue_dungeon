@@ -44,6 +44,17 @@ public class TestEnemyShooting : MonoBehaviour
                 _agentScript.agent.isStopped = false;
                 _agentScript.agent.SetDestination(player.transform.position);
             }
+        if (player != null && _agentScript.aggre == true &&
+            _agentScript.isOnLine)
+        {
+         
+            _agentScript.agent.isStopped = true;
+            //gameObject.GetComponent<AgentScript>().agent.SetDestination(player.transform.position);   
+        }
+        else
+        {
+            _agentScript.agent.isStopped = false;
+            _agentScript.agent.SetDestination(player.transform.position);
         }
     }
 
