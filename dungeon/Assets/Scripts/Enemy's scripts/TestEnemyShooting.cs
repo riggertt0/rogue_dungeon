@@ -31,6 +31,7 @@ public class TestEnemyShooting : MonoBehaviour
 
         if (player != null && gameObject.GetComponent<AgentScript>().aggre == true && gameObject.GetComponent<AgentScript>().isOnLine)
         {
+            gameObject.GetComponent<AgentScript>().agent.isStopped = true;
             GameObject Spell = Instantiate(projectile, transform.position, Quaternion.identity);
             Vector2 playerPos = player.transform.position;
             Vector2 myPos = transform.position;
@@ -57,6 +58,7 @@ public class TestEnemyShooting : MonoBehaviour
         }
         else
         {
+            gameObject.GetComponent<AgentScript>().agent.isStopped = false;
             StartCoroutine(ShootPlayer());
         }
     }

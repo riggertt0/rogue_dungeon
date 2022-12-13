@@ -8,7 +8,7 @@ public class AgentScript : MonoBehaviour
 {
     [SerializeField] Transform target;
 
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
 
     public float distance_rage;
 
