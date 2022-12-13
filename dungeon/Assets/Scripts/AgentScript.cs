@@ -53,7 +53,7 @@ public class AgentScript : MonoBehaviour
                 else
                 {
                     agent.isStopped = true;
-                    agent.SetDestination(target.position);
+                    //agent.SetDestination(target.position);
                 }
             }
             else
