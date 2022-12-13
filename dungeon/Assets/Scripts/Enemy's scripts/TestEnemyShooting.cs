@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class TestEnemyShooting : MonoBehaviour
 {
@@ -18,22 +21,57 @@ public class TestEnemyShooting : MonoBehaviour
 
     public float cooldown;
 
+    private AgentScript _agentScript;
+
     void Start()
     {
         StartCoroutine(ShootPlayer());
         player = FindObjectOfType<move_object>().gameObject;
+        _agentScript = gameObject.GetComponent<AgentScript>();
+    }
+
+    private void Update()
+    {
+        if (player != null)
+        { 
+            if (_agentScript.aggre == true && _agentScript.isOnLine)
+            {
+                _agentScript.agent.isStopped = true;
+                //gameObject.GetComponent<AgentScript>().agent.SetDestination(player.transform.position);   
+            }
+            else
+            {
+                _agentScript.agent.isStopped = false;
+                _agentScript.agent.SetDestination(player.transform.position);
+            }
+        if (player != null && _agentScript.aggre == true &&
+            _agentScript.isOnLine)
+        {
+         
+            _agentScript.agent.isStopped = true;
+            //gameObject.GetComponent<AgentScript>().agent.SetDestination(player.transform.position);   
+        }
+        else
+        {
+            _agentScript.agent.isStopped = false;
+            _agentScript.agent.SetDestination(player.transform.position);
+        }
     }
 
     IEnumerator ShootPlayer()
     {
 
         yield return new WaitForSeconds(cooldown);
+        
+        
+        Vector2 playerPos = player.transform.position;
+        Vector2 myPos = transform.position;
 
-        if (player != null && gameObject.GetComponent<AgentScript>().aggre == true)
+        if (player != null && _agentScript.aggre == true && _agentScript.isOnLine
+            && dist > Vector2.Distance(myPos, playerPos))
         {
+            
             GameObject Spell = Instantiate(projectile, transform.position, Quaternion.identity);
-            Vector2 playerPos = player.transform.position;
-            Vector2 myPos = transform.position;
             Vector2 direction = (playerPos - myPos).normalized;
 
             Vector3 spell_test = transform.eulerAngles;
