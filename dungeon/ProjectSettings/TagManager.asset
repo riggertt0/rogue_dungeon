@@ -8,6 +8,9 @@ TagManager:
   - Projectile
   - Open_door
   - buildings
+  - Rooms
+  - RoomPoints
+  - Wall
   layers:
   - Default
   - TransparentFX
