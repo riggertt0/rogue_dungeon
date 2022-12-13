@@ -33,7 +33,7 @@ public class TestEnemyShooting : MonoBehaviour
     private void Update()
     {
         if (player != null)
-        { 
+        {
             if (_agentScript.aggre == true && _agentScript.isOnLine)
             {
                 _agentScript.agent.isStopped = true;
@@ -44,17 +44,6 @@ public class TestEnemyShooting : MonoBehaviour
                 _agentScript.agent.isStopped = false;
                 _agentScript.agent.SetDestination(player.transform.position);
             }
-        if (player != null && _agentScript.aggre == true &&
-            _agentScript.isOnLine)
-        {
-         
-            _agentScript.agent.isStopped = true;
-            //gameObject.GetComponent<AgentScript>().agent.SetDestination(player.transform.position);   
-        }
-        else
-        {
-            _agentScript.agent.isStopped = false;
-            _agentScript.agent.SetDestination(player.transform.position);
         }
     }
 
@@ -64,7 +53,7 @@ public class TestEnemyShooting : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
         
         
-        Vector2 playerPos = player.transform.position;
+        Vector2 playerPos = player != null ? player.transform.position : Vector2.zero;
         Vector2 myPos = transform.position;
 
         if (player != null && _agentScript.aggre == true && _agentScript.isOnLine
