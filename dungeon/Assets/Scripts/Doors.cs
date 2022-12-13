@@ -9,24 +9,31 @@ public class Doors : MonoBehaviour
     public GameObject RightWall;
     public GameObject DownWall;
 
-    private void OnStayEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("sdfdsf");
         if (other.gameObject.tag == "Wall")
         {
-            if (transform.rotation.z == 0) {
+            Debug.Log("door touch wall");
+            Debug.Log(name);
+            Debug.Log(transform.localEulerAngles.z);
+            float angle = transform.localEulerAngles.z;
+            if (angle == 0) {
+                Debug.Log("Spawn Left Wall");
                 Instantiate(LeftWall, transform.position, Quaternion.identity);
             }
-            else if (transform.rotation.z == 270)
+            else if (angle == 270)
             {
+                Debug.Log("Spawn Top Wall");
                 Instantiate(UpWall, transform.position, Quaternion.identity);
             }
-            else if (transform.rotation.z == 180)
+            else if (angle == 180)
             {
+                Debug.Log("Spawn Right Wall");
                 Instantiate(RightWall, transform.position, Quaternion.identity);
             }
-            else if (transform.rotation.z == 90)
+            else if (angle == 90)
             {
+                Debug.Log("Spawn Bottom Wall");
                 Instantiate(DownWall, transform.position, Quaternion.identity);
             }
             Destroy(gameObject);
