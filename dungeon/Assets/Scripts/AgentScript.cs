@@ -12,6 +12,8 @@ public class AgentScript : MonoBehaviour
 
     public float distance_rage;
 
+    public float stopDistance;
+
     public bool aggre = false;
 
     // Start is called before the first frame update
@@ -43,23 +45,21 @@ public class AgentScript : MonoBehaviour
                 {
                     aggre = true;
                     agent.isStopped = false;
-                    agent.SetDestination(target.position);
                 }
                 else
                 {
                     agent.isStopped = true;
-                    agent.SetDestination(target.position);
                 }
             }
+            if (Mathf.Abs(agent.remainingDistance - Vector2.Distance(target.position, transform.position)) < 0.1)
+                agent.stoppingDistance = stopDistance;
             else
-            {
-                
-                agent.SetDestination(target.position);
-            }
+                agent.stoppingDistance = 0.5f;
+            agent.SetDestination(target.position);
 
-                //Debug.Log("->");
+            //Debug.Log("->");
 
-                //Debug.Log(agent.remainingDistance);
+            //Debug.Log(agent.remainingDistance);
 
             //Debug.Log("-*");
             //}
