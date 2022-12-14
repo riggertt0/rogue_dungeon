@@ -17,10 +17,12 @@ public class EnemyReceiveDamage : MonoBehaviour
 
     public int xp_per_kill;
 
+    private AddRoom room;
+
     void Start()
     {
         Health = MaxHealth;
-
+        room = GetComponentInParent<AddRoom>();
       //  for (int i = 0; i < loot.Length; ++i)
        // {
       //      loot[i].GetComponent<CoinsTrigger>().cam = Camera.current;
@@ -32,7 +34,11 @@ public class EnemyReceiveDamage : MonoBehaviour
     {
         if (Health <= 0)
         {
-
+            try
+            {
+                room.Enemies.Remove(gameObject);
+            }
+            catch { }
             Destroy(gameObject);
 
             GameObject game_manager = GameObject.Find("Game Manager");

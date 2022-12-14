@@ -32,7 +32,7 @@ public class RoomSpawner : MonoBehaviour
             SpawnPointsSet.Add(pos);
             variants = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomVariants>();
             Destroy(gameObject, waitTime);
-            Invoke("Spawn", 0.2f);
+            Invoke("Spawn", 0.05f);
         }
     }
     private GameObject Level;
