@@ -445,11 +445,6 @@ MonoBehaviour:
   healthBar: {fileID: 1245589818098777715}
   loot:
   - {fileID: 2146346371655869569, guid: 591f1726f118a0d40b746e3606d263eb, type: 3}
-  - {fileID: 2146346371655869569, guid: 591f1726f118a0d40b746e3606d263eb, type: 3}
-  - {fileID: 2146346371655869569, guid: 591f1726f118a0d40b746e3606d263eb, type: 3}
-  - {fileID: 2146346371655869569, guid: 591f1726f118a0d40b746e3606d263eb, type: 3}
-  - {fileID: 2146346371655869569, guid: 591f1726f118a0d40b746e3606d263eb, type: 3}
-  - {fileID: 2146346371655869569, guid: 591f1726f118a0d40b746e3606d263eb, type: 3}
   healthBarSlider: {fileID: 7415796632875290590}
   xp_per_kill: 10
 --- !u!114 &931087048852417488
@@ -465,8 +460,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 5912618103451248928, guid: 709d031dadd46874baa32311cbba1238, type: 3}
-  minDamage: 10
-  maxDamage: 10
+  minDamage: 3
+  maxDamage: 3
   dist: 3
   projectileForce: 7
   cooldown: 3
@@ -571,7 +566,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.14509805, g: 0.09411766, b: 0.13333334, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1

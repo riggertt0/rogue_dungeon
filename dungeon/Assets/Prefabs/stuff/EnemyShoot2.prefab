@@ -170,8 +170,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 5912618103451248928, guid: 709d031dadd46874baa32311cbba1238, type: 3}
-  minDamage: 25
-  maxDamage: 25
+  minDamage: 5
+  maxDamage: 5
   dist: 10
   projectileForce: 14
   cooldown: 1

@@ -283,7 +283,6 @@ MonoBehaviour:
   healthBar: {fileID: 8968257857122409638}
   loot:
   - {fileID: 2146346371655869569, guid: 591f1726f118a0d40b746e3606d263eb, type: 3}
-  - {fileID: 628912917744621005, guid: 76e0ab0827c42e244bb7e18c2127d3c1, type: 3}
   healthBarSlider: {fileID: 853060397776514315}
   xp_per_kill: 35
 --- !u!114 &7023164767544928754
@@ -337,8 +336,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 6370655537750623613, guid: 1cdcbf06c8d476c4ba1f7ad65e9fe929, type: 3}
-  minDamage: 10
-  maxDamage: 10
+  minDamage: 2
+  maxDamage: 2
   dist: 1.6
   projectileForce: 16
   cooldown: 0.5

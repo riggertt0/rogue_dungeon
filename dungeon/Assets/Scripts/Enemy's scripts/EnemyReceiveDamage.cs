@@ -45,11 +45,12 @@ public class EnemyReceiveDamage : MonoBehaviour
 
             game_manager.GetComponent<PlayerSetts>().AddXp(xp_per_kill);
 
-            for (int i = 0; i < loot.Length; i++)
+            int rand = Random.Range(2, 5);
+            for (int i = 0; i < rand; i++)
             {
                 Vector2 death_pos = transform.position;    
                 
-                GameObject Loot = Instantiate(loot[i], death_pos, Quaternion.identity);
+                GameObject Loot = Instantiate(loot[Random.Range(0, loot.Length)], death_pos, Quaternion.identity);
 
                 Loot.GetComponent<ItemTrigger>().item = Loot;
                 Loot.GetComponent<ItemTrigger>().death = true;

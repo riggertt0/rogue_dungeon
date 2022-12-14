@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AddRoom : MonoBehaviour
 {
@@ -60,7 +61,7 @@ public class AddRoom : MonoBehaviour
         {
             Spawned = true;
             CloseAllDoors();
-            int CountSpawner = Random.Range(2, 5);
+            int CountSpawner = 3;
             Debug.Log("Count Spawners");
             Debug.Log(Spawners.Count);
             Debug.Log("Count spawned enemies/chest");
