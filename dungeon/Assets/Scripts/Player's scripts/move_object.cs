@@ -23,7 +23,14 @@ public class move_object : MonoBehaviour
 
     void walk() {
         moveVector.x = Input.GetAxis("Horizontal");
-        if (moveVector.x == 0)
+
+
+        rb.velocity = new Vector2(moveVector.x * speed, rb.velocity.y);
+        
+
+        moveVector.y = Input.GetAxis("Vertical");
+
+        if (moveVector.x == 0 && moveVector.y == 0)
         {
             anim.SetFloat("Sp", 0);
         }
@@ -31,11 +38,6 @@ public class move_object : MonoBehaviour
         {
             anim.SetFloat("Sp", 1);
         }
-
-        rb.velocity = new Vector2(moveVector.x * speed, rb.velocity.y);
-        
-
-        moveVector.y = Input.GetAxis("Vertical");
         rb.velocity = new Vector2(rb.velocity.x, moveVector.y * speed);
 
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -44,7 +46,7 @@ public class move_object : MonoBehaviour
         //if (mousePos.x - myPos.x > 0) spriteRenderer.flipX = false;
         //else spriteRenderer.flipX = true;
 
-        if (moveVector.x >= 0 && Direction == false) {
+        if (moveVector.x > 0 && Direction == false) {
             Flip();
         }
         else if (moveVector.x < 0 && Direction == true) {
