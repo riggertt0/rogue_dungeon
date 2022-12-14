@@ -18,10 +18,13 @@ public class EnemyCloseHit : MonoBehaviour
 
     public float cooldown;
 
+    public Vector2 direction;
+
     void Start()
     {
         StartCoroutine(ShootPlayer());
         player = FindObjectOfType<move_object>().gameObject;
+        direction = new Vector2(1, 0);
     }
 
     IEnumerator ShootPlayer()
@@ -34,7 +37,8 @@ public class EnemyCloseHit : MonoBehaviour
             GameObject Spell = Instantiate(projectile, transform.position, Quaternion.identity);
             Vector2 playerPos = player.transform.position;
             Vector2 myPos = transform.position;
-            Vector2 direction = (playerPos - myPos).normalized;
+            if (playerPos != myPos)
+                direction = (playerPos - myPos).normalized;
 
             Vector3 spell_test = transform.eulerAngles;
 
