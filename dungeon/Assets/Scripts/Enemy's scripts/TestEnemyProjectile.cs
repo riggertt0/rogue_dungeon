@@ -8,7 +8,8 @@ public class TestEnemyProjectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D Collision)
     {
-        if (Collision.tag != "Enemy" && Collision.tag != "Projectile")
+        
+        if (Collision.tag != "Enemy" && Collision.tag != "Projectile" && Collision.tag != "Level")
         {
             if (Collision.tag == "Player")
             {

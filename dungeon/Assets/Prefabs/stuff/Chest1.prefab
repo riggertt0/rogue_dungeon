@@ -612,6 +612,12 @@ MonoBehaviour:
   - {fileID: 100282619247313491, guid: 2f298def159821f409c83fc8fc58988d, type: 3}
   - {fileID: 628912917744621005, guid: 76e0ab0827c42e244bb7e18c2127d3c1, type: 3}
   - {fileID: 170687758984697133, guid: 4f81683c90fcef746b0be94784a3b96b, type: 3}
+  - {fileID: 2298325615029022866, guid: 5aef5fba18662aa45b3c33f0fadf76d2, type: 3}
+  - {fileID: 3542706300687216265, guid: 9ef0fe96e282f9c4b9abc31306f575f3, type: 3}
+  - {fileID: 1630245471571356557, guid: 08b45aeb7ff435f4483be1e7c624f9f2, type: 3}
+  - {fileID: 2743005194065220275, guid: 72d8eead64633744eb20a275c6848d9d, type: 3}
+  - {fileID: 2332336937050829325, guid: 2ddd7afb7d5aa424cabf4ea67452d4fc, type: 3}
+  - {fileID: 862497013880591132, guid: b4c13ec992c348a419503caa61bb088e, type: 3}
   healthBarSlider: {fileID: 6747213925369247235}
   xp_per_kill: 0
 --- !u!1 &8173494881970321217
