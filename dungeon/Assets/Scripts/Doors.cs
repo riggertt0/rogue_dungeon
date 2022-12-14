@@ -11,25 +11,29 @@ public class Doors : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Wall")
+        if (other.gameObject.tag != "Door")
         {
-            float angle = transform.localEulerAngles.z;
-            if (angle == 0) {
-                Instantiate(LeftWall, transform.position, Quaternion.identity);
-            }
-            else if (angle == 270)
+            if (other.gameObject.tag == "Wall")
             {
-                Instantiate(UpWall, transform.position, Quaternion.identity);
+                float angle = transform.localEulerAngles.z;
+                if (angle == 0)
+                {
+                    Instantiate(LeftWall, transform.position, Quaternion.identity);
+                }
+                else if (angle == 270)
+                {
+                    Instantiate(UpWall, transform.position, Quaternion.identity);
+                }
+                else if (angle == 180)
+                {
+                    Instantiate(RightWall, transform.position, Quaternion.identity);
+                }
+                else if (angle == 90)
+                {
+                    Instantiate(DownWall, transform.position, Quaternion.identity);
+                }
+                Destroy(gameObject);
             }
-            else if (angle == 180)
-            {
-                Instantiate(RightWall, transform.position, Quaternion.identity);
-            }
-            else if (angle == 90)
-            {
-                Instantiate(DownWall, transform.position, Quaternion.identity);
-            }
-            Destroy(gameObject);
         }
     }
 }

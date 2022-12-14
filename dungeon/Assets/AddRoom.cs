@@ -11,8 +11,6 @@ public class AddRoom : MonoBehaviour
     public List<GameObject> Enemies = new List<GameObject>();
     public List<GameObject> TypeOfEnemies = new List<GameObject>();
     private List<GameObject> Doors = new List<GameObject>();
-    public List<GameObject> Levels = new List<GameObject>();
-    public List<GameObject> PassedLevels = new List<GameObject>();
     public GameObject Chest;
     private bool Spawned;
     public GameObject image;
@@ -20,7 +18,6 @@ public class AddRoom : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Levels.Add(gameObject);
         Invoke("SetDoors", 3f);
         Spawned = false;
         OpenDoors = true;
@@ -96,16 +93,11 @@ public class AddRoom : MonoBehaviour
             StartCoroutine(CheckEnemies());
         }
     }
+
     IEnumerator CheckEnemies()
     {
         yield return new WaitForSeconds(1f);
         yield return new WaitUntil(() => Enemies.Count == 0);
-        Levels.Remove(gameObject);
-        PassedLevels.Add(gameObject);
-        if (Levels.Count == 0)
-        {
-            image.gameObject.SetActive(true);
-        }
         OpenAllDoors();
     }
 }
