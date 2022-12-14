@@ -571,6 +571,7 @@ MonoBehaviour:
   healthBar: {fileID: 2090492818339094288}
   loot: []
   healthBarSlider: {fileID: 7683676204663336637}
+  xp_per_kill: 0
 --- !u!114 &45097360632908467
 MonoBehaviour:
   m_ObjectHideFlags: 0
