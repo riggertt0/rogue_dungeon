@@ -184,4 +184,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418c65835d09e384bb562febb482d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectile: {fileID: 62135823871047085, guid: 4ba42e89587611d458e1a6fc9ec71452, type: 3}
+  particle: {fileID: 159918, guid: 0060d4a5b65ed1248b4692fced0b1284, type: 3}
   Sword: {fileID: 628912917744621005}
+  projectile_distance: 4
+  minDamage: 10
+  maxDamage: 20
+  projectileForce: 3
+  game_manager: {fileID: 0}
+  player: {fileID: 0}

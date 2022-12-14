@@ -6,7 +6,6 @@ using UnityEngine;
 public class close_damage : MonoBehaviour
 {
     public GameObject projectile;
-
     public float minDamage;
 
     public float maxDamage;
