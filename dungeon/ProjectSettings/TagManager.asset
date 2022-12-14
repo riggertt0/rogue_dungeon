@@ -11,6 +11,9 @@ TagManager:
   - Rooms
   - RoomPoints
   - Wall
+  - Door
+  - Spawner
+  - Level
   layers:
   - Default
   - TransparentFX
